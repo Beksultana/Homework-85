@@ -1,0 +1,12 @@
+.Artists {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.ArtistItem {
+    margin: 10px;
+    width: 310px;
+    box-shadow: 5px 5px 8px #ccc;
+    text-align: center;
+}
