@@ -28,8 +28,8 @@ router.get('/', (req, res) => {
     }
 });
 
-router.get('/:albumsId', (req, res) => {
-    AlbumSchema.findOne({_id: req.params.albumsId}).populate('artists')
+router.get('/:Id', (req, res) => {
+    AlbumSchema.findOne({artists: req.params.Id}).populate('artists')
         .then(result => res.send(result))
         .catch(() => res.sendStatus(500))
 

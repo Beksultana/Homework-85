@@ -1,7 +1,8 @@
-import {FETCH_ARTISTS_SUCCESS} from "../actions/musicTypeActions";
+import {FETCH_ALBUM_SUCCESS, FETCH_ARTISTS_SUCCESS} from "../actions/musicTypeActions";
 
 const initialState = {
-    artists: []
+    artists: [],
+    albums: []
 };
 
 const musicReducer = (state = initialState, action) => {
@@ -10,6 +11,11 @@ const musicReducer = (state = initialState, action) => {
             return {
                 ...state,
                 artists: action.artists
+            };
+        case FETCH_ALBUM_SUCCESS:
+            return {
+                ...state,
+                albums: action.albums
             };
         default:
             return state;

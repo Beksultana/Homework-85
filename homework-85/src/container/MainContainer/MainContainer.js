@@ -1,8 +1,9 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from "react-redux";
 import {fetchArtists} from "../../store/actions/musicSyncActions";
-import {Button, Card, CardBody, CardGroup, CardImg, CardTitle} from "reactstrap";
+import { Card, CardBody, CardGroup} from "reactstrap";
 import './MainContainer.css';
+import {Link} from "react-router-dom";
 
 class MainContainer extends Component {
 
@@ -13,15 +14,16 @@ class MainContainer extends Component {
     render() {
 
         const artists = this.props.artists ? this.props.artists.map(artist => {
-            console.log(artist);
             return (
                 <div className="ArtistItem" key={artist._id}>
                     <CardGroup>
                         <Card>
-                            <img style={{width: "309px", height: '300px'}} src={"http://localhost:9000/uploads/" + artist.image} alt="image"/>
+                            <img style={{width: "309px", height: '300px'}}
+                                 src={"http://localhost:9000/uploads/" + artist.image} alt="image"/>
                             <CardBody>
-                                <h2>{artist.artists}</h2>
-                                <Button outline color="info">MORE</Button>
+                                <Link to={/artists/ + artist._id}>
+                                    {artist.artists}
+                                </Link>
                             </CardBody>
                         </Card>
                     </CardGroup>
@@ -47,7 +49,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchArtists: () => dispatch(fetchArtists())
+        fetchArtists: () => dispatch(fetchArtists()),
     }
 };
 

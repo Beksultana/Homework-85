@@ -76,18 +76,18 @@ const run = async () => {
 );
 
     await Track.create(
-        {trackName: 'Its Roxy', albums: albums[0]._id, duration: '05:20'},
-        {trackName: 'Rising Bells', albums: albums[1]._id, duration: '03:20'},
-        {trackName: 'Love', albums: albums[0]._id, duration: '04:34'},
-        {trackName: 'Every Waking Hour (Instrumental) ', albums: albums[0]._id, duration: '04:20'},
-        {trackName: 'The Nearest Door ', albums: albums[5]._id, duration: '02:22'},
-        {trackName: 'Strangers With Shoes ', albums: albums[5]._id, duration: '02:26'},
-        {trackName: 'The Zeppelin', albums: albums[3]._id, duration: '02:20'},
-        {trackName: 'Surly Bonds', albums: albums[3]._id, duration: '03:49'},
-        {trackName: 'Surly Bonds', albums: albums[3]._id, duration: '03:49'},
-        {trackName: 'Vittoro', albums: albums[3]._id, duration: '03:49'},
-        {trackName: 'Warmed Up', albums: albums[4]._id, duration: '03:49'},
-        {trackName: 'All On Me ', albums: albums[4]._id, duration: '04:58'},
+        {trackName: 'Its Roxy', albums: albums[0]._id, duration: '05:20', numberTrack: 1},
+        {trackName: 'Rising Bells', albums: albums[1]._id, duration: '03:20', numberTrack: 1},
+        {trackName: 'Love', albums: albums[0]._id, duration: '04:34', numberTrack: 2},
+        {trackName: 'Every Waking Hour (Instrumental) ', albums: albums[0]._id, duration: '04:20', numberTrack: 3},
+        {trackName: 'The Nearest Door ', albums: albums[5]._id, duration: '02:22', numberTrack: 1},
+        {trackName: 'Strangers With Shoes ', albums: albums[5]._id, duration: '02:26', numberTrack: 2},
+        {trackName: 'The Zeppelin', albums: albums[3]._id, duration: '02:20', numberTrack: 1},
+        {trackName: 'Surly Bonds', albums: albums[3]._id, duration: '03:49', numberTrack: 2},
+        {trackName: 'Surly Bonds', albums: albums[3]._id, duration: '03:49', numberTrack: 3},
+        {trackName: 'Vittoro', albums: albums[3]._id, duration: '03:49', numberTrack: 4},
+        {trackName: 'Warmed Up', albums: albums[4]._id, duration: '03:49', numberTrack: 1},
+        {trackName: 'All On Me ', albums: albums[4]._id, duration: '04:58', numberTrack: 2},
     );
 
     await TrackHistory.create(
