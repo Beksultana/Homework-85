@@ -5,7 +5,7 @@ import {Container} from "reactstrap";
 import Albums from "./components/Albums/Albums";
 import Tracks from "./components/Tracks/Tracks";
 import Toolbar from "./components/UI/Toolbar/Toolbar";
-
+import Registers from "./container/Registers/Registers";
 
 class App extends Component {
   render() {
@@ -19,7 +19,7 @@ class App extends Component {
                 <Route path="/" exact component={MainContainer}/>
                 <Route path="/albums/:id" component={Albums}/>
                 <Route path="/tracks/:id" component={Tracks}/>
-
+                <Route path="/register" component={Registers}/>
             </Switch>
         </Container>
       </Fragment>

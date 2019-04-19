@@ -12,7 +12,9 @@ const Toolbar = () => {
                    <NavLink tag={RouterNavLink} to="/" >Music</NavLink>
                </NavItem>
 
-               
+                <NavItem>
+                    <NavLink tag={RouterNavLink} to="/register" >Sign Up</NavLink>
+                </NavItem>
             </Nav>
         </Navbar>
     );

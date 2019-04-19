@@ -1,0 +1,43 @@
+.signUp {
+    width: 40%;
+    margin: 50px auto;
+    padding: 30px;
+    border: 1px solid #eee;
+    box-shadow: 3px 4px 8px #ccc;
+    border-radius: 15px;
+}
+.input {
+    width: 100%;
+    padding: 5px;
+    border: transparent;
+    outline: none;
+    border-bottom: 1px solid #ced4da;
+    background-color: #fff;
+    background-clip: padding-box;
+    color: #495057;
+}
+.SignUpTextBlock {
+    width: 100%;
+}
+.SignUpText{
+    margin: 0 auto;
+    padding: 7px 10px;
+    font-weight: bold;
+    color: #008dee;
+    text-align: center;
+    width: 60%;
+    border-bottom: 1px solid #ccc;
+}
+.Form {
+    margin-top: 50px;
+}
+.buttonBox {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+
+.btn {
+    margin: 5px;
+    width: 30%;
+}
