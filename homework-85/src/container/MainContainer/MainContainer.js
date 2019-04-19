@@ -37,7 +37,8 @@ class MainContainer extends Component {
             <Fragment>
                 <div className="HeaderTitleInfo">
                     <h2
-                        style={{color: '#5e5e5e', fontWeight: "bold"}}
+                        style={{
+                            color: '#5e5e5e', fontWeight: "bold"}}
                     >
                         Artists
                     </h2>
