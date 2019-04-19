@@ -1,8 +1,9 @@
 .Albums{
-    margin-top: 40px;
+    margin-top: 10px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    border-top: 1px solid #ccc;
 }
 .AlbumsItem {
     margin: 10px;

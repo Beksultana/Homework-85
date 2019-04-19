@@ -1,0 +1,31 @@
+.TrackInfo {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.TrackInfo p {
+    margin: 0;
+    padding: 20px 30px;
+    background: #008dee;
+    color: white;
+}
+.TrackItem {
+    margin: 5px 0;
+    box-shadow: 3px 3px 8px #ccc;
+}
+.headerInfo {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+}
+
+.headerInfo p{
+    font-size: 20px;
+    color: #5e5e5e;
+}
+.Tracks {
+    margin-top: 10px;
+}
+

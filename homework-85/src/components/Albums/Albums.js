@@ -1,14 +1,14 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import {connect} from "react-redux";
 import {fetchAlbums} from "../../store/actions/albumsActions";
-import {Card, CardBody, CardGroup} from "reactstrap";
+import {Card, CardBody, CardGroup, CardImg, CardText} from "reactstrap";
 import {Link} from "react-router-dom";
 import './Albums.css';
 
 class Albums extends Component {
 
     componentDidMount() {
-        this.props.fetchAlbums();
+        this.props.fetchAlbums(this.props.match.params.id);
     }
 
     render() {
@@ -17,22 +17,38 @@ class Albums extends Component {
                 <div className="AlbumsItem" key={album._id}>
                     <CardGroup>
                         <Card>
-                            <img style={{width: "309px", height: '300px'}}
-                                 src={"http://localhost:9000/uploads/" + album.image} alt="image"/>
+                            <CardImg top width="100%" src={"http://localhost:9000/uploads/" + album.image}
+                                     alt="Card image cap" />
                             <CardBody>
-                                <Link to={/album/ + album._id}>
+                                <Link to={/tracks/ + album._id}>
                                     {album.albumName}
                                 </Link>
+                                <CardText>{album.year}</CardText>
                             </CardBody>
                         </Card>
                     </CardGroup>
                 </div>
             )
         }) : null;
+
+        const sum = albums.length;
+
         return (
-            <div className="Albums">
-                {albums}
-            </div>
+            <Fragment>
+                <div className="HeaderTitleInfo">
+                    <h2
+                        style={{color: '#5e5e5e', fontWeight: "bold"}}
+                    >
+                        Albums
+                    </h2>
+
+                    <p><strong>Number of albums: {sum}</strong></p>
+                </div>
+
+                <div className="Albums">
+                    {albums}
+                </div>
+            </Fragment>
         );
     }
 }
@@ -45,7 +61,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchAlbums: () => dispatch(fetchAlbums())
+        fetchAlbums: (id) => dispatch(fetchAlbums(id))
     };
 };
 

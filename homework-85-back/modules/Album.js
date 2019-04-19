@@ -15,9 +15,6 @@ const AlbumSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Artist',
         required: true
-    },
-    released: {
-        type: String
     }
 
 });

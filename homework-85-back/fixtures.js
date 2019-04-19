@@ -4,7 +4,6 @@ const config = require('./config');
 const Artist = require('./modules/Artist');
 const Album = require('./modules/Album');
 const Track = require('./modules/Track');
-const TrackHistory = require('./modules/TrackHistory');
 
 const run = async () => {
     await mongoose.connect(config.artistsDb, config.mongooseOptions);
@@ -32,16 +31,22 @@ const run = async () => {
             image: 'Ketsa.jpg'
         },
         {
+            albumName: ' Moon Rise ',
+            year: "2012",
+            artists: artists[0]._id,
+            image: 'KetsaAlbum1.jpeg'
+        },
+        {
             albumName: 'Ambient Bells',
             year: "2015",
             artists: artists[1]._id,
-            image: 'daniel.jpg'
+            image: 'danilAlbum.jpeg'
         },
         {
             albumName: 'Love you',
             year: "2016",
             artists: artists[0]._id,
-            image: 'Ketsa.jpg'
+            image: 'KetsaAlbum2.jpg'
         },
         {
             albumName: 'The Nearest Door',
@@ -77,22 +82,32 @@ const run = async () => {
 
     await Track.create(
         {trackName: 'Its Roxy', albums: albums[0]._id, duration: '05:20', numberTrack: 1},
+        {trackName: 'Moon Rise', albums: albums[0]._id, duration: '03:50', numberTrack: 2},
+        {trackName: 'Eastern Midnights', albums: albums[0]._id, duration: '03:50', numberTrack: 3},
+        {trackName: 'Love', albums: albums[0]._id, duration: '04:34', numberTrack: 4},
+        {trackName: 'Every Waking Hour (Instrumental) ', albums: albums[0]._id, duration: '04:20', numberTrack: 5},
+
+        {trackName: 'Intermittent ', albums: albums[2]._id, duration: '04:00', numberTrack: 1},
+        {trackName: 'Duplicates  ', albums: albums[2]._id, duration: '03:08', numberTrack: 2},
+        {trackName: 'Night Flying  ', albums: albums[2]._id, duration: '04:26', numberTrack: 3},
+        {trackName: 'Vintage Beat  ', albums: albums[2]._id, duration: '02:25', numberTrack: 4},
+        {trackName: 'The Return  ', albums: albums[2]._id, duration: '01:32', numberTrack: 5},
+        {trackName: 'Reflective  ', albums: albums[2]._id, duration: '03:43', numberTrack: 6},
+
         {trackName: 'Rising Bells', albums: albums[1]._id, duration: '03:20', numberTrack: 1},
-        {trackName: 'Love', albums: albums[0]._id, duration: '04:34', numberTrack: 2},
-        {trackName: 'Every Waking Hour (Instrumental) ', albums: albums[0]._id, duration: '04:20', numberTrack: 3},
+
         {trackName: 'The Nearest Door ', albums: albums[5]._id, duration: '02:22', numberTrack: 1},
         {trackName: 'Strangers With Shoes ', albums: albums[5]._id, duration: '02:26', numberTrack: 2},
+
         {trackName: 'The Zeppelin', albums: albums[3]._id, duration: '02:20', numberTrack: 1},
         {trackName: 'Surly Bonds', albums: albums[3]._id, duration: '03:49', numberTrack: 2},
         {trackName: 'Surly Bonds', albums: albums[3]._id, duration: '03:49', numberTrack: 3},
         {trackName: 'Vittoro', albums: albums[3]._id, duration: '03:49', numberTrack: 4},
+
         {trackName: 'Warmed Up', albums: albums[4]._id, duration: '03:49', numberTrack: 1},
         {trackName: 'All On Me ', albums: albums[4]._id, duration: '04:58', numberTrack: 2},
     );
 
-    await TrackHistory.create(
-        {trackName: 'Its Roxy', albums: albums[0]._id, duration: now()},
-    );
     await  connection.close()
 };
 

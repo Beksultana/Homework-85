@@ -8,3 +8,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.HeaderTitleInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 20px;
+}
+.HeaderTitleInfo p {
+  color: #5e5e5e;
+  margin: 0;
+  padding: 0;
+}

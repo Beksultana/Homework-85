@@ -3,6 +3,7 @@ const nanoid = require('nanoid');
 const config = require('../config');
 const multer = require('multer');
 const ArtistSchema = require('../modules/Artist');
+const AlbumSchema = require('../modules/Album');
 const router = express.Router();
 
 const storage = multer.diskStorage({
@@ -20,6 +21,15 @@ router.get('/', (req, res) => {
     ArtistSchema.find()
        .then(result => res.send(result))
        .catch(() => res.sendStatus(500))
+});
+
+router.get('/:id' , async (req, res) => {
+    try {
+        const albums = await AlbumSchema.find({artists: req.params.id});
+        res.send(albums)
+    } catch (error) {
+        res.status(400).send(error)
+    }
 });
 
 router.post('/', (req, res) => {
