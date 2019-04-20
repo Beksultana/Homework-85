@@ -8,11 +8,12 @@ router.post('/', async (req, res) => {
 
     const user = new UserSchema(req.body);
         user.save()
-        .then(result => res.send(result))
-        .catch(error => res.send(error))
+        .then(user => res.send({message: "User registered", user}))
+        .catch(error => res.status(400).send(error))
 });
 
 router.post('/session', async (req, res) => {
+
     const user = await UserSchema.findOne({username: req.body.username});
     if (!user)  {
         return res.status(400).send({error: 'User not found'});
@@ -23,7 +24,9 @@ router.post('/session', async (req, res) => {
         return res.status(400).send({error: "Password is wrong"});
     }
 
-    res.send({message: "Username/Password correct!"});
+    user.generateToken();
+
+    return res.send({message: "Login successful", user});
 });
 
 module.exports = router;

@@ -2,6 +2,8 @@ import React, {Component, Fragment} from 'react';
 import {Button,Form} from "reactstrap";
 import './Register.css';
 import FormElement from "../../components/FormElement/FormElement";
+import {registerSuccess} from "../../store/actions/usersActions";
+import {connect} from "react-redux";
 
 class Registers extends Component {
 
@@ -16,9 +18,29 @@ class Registers extends Component {
         });
     };
 
+    submitFormHandler = event => {
+        event.preventDefault();
+
+        this.props.registerUser({...this.state});
+    };
+
+    submitCancel = event => {
+        event.preventDefault();
+        this.props.history.push('/');
+    };
+
     render() {
         return (
             <Fragment>
+                <div className="HeaderTitleInfo">
+                    <h2
+                        style={{
+                            color: '#5e5e5e', fontWeight: "bold"}}
+                    >
+                        Register
+                    </h2>
+                </div>
+                <hr/>
                 <div className="signUp">
 
                     <div className="SignUpTextBlock">
@@ -26,7 +48,7 @@ class Registers extends Component {
                     </div>
 
                     <div className="Form">
-                        <Form>
+                        <Form onSubmit={this.submitFormHandler}>
                             <FormElement
                                 type="text"
                                 name="username"
@@ -46,8 +68,8 @@ class Registers extends Component {
                             />
 
                             <div className="buttonBox">
-                                <Button className="btn" color="danger">Cancel</Button>
-                                <Button className="btn" color="primary">Send</Button>
+                                <Button onClick={this.submitCancel} className="btn" color="danger">Cancel</Button>
+                                <Button type="submit" className="btn" color="primary">Register</Button>
                             </div>
 
                         </Form>
@@ -58,4 +80,12 @@ class Registers extends Component {
     }
 }
 
-export default Registers;
+const mapStateToProps = state => ({
+    error: state.user.error
+});
+
+const mapDispatchToProps = dispatch => ({
+    registerUser: userData => dispatch(registerSuccess (userData))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Registers);

@@ -18,6 +18,7 @@
     display: flex;
     justify-content: space-between;
     border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
     padding-top: 10px;
 }
 
@@ -28,4 +29,27 @@
 .Tracks {
     margin-top: 10px;
 }
+.NumberTrack {
+    display: flex;
+    align-items: center;
+}
+.Play {
+    padding: 0 15px;
+    margin-left: 10px;
+    background: #008dee url("../../assets/image/play.png")50% 50% no-repeat;
+    color: white;
+    border: transparent;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
 
+.Play:hover {
+    background: #0078cb url("../../assets/image/play.png")50% 50% no-repeat;
+}
+
+.Play:active {
+    opacity: 0.5;
+    outline: none;
+    border: none;
+}

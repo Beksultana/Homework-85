@@ -4,6 +4,7 @@ import {fetchArtists} from "../../store/actions/musicSyncActions";
 import {Card, CardBody, CardGroup, CardImg} from "reactstrap";
 import './MainContainer.css';
 import {Link} from "react-router-dom";
+import HeaderInfo from "../../components/HeaderInfo/HeaderInfo";
 
 class MainContainer extends Component {
 
@@ -35,16 +36,7 @@ class MainContainer extends Component {
 
         return (
             <Fragment>
-                <div className="HeaderTitleInfo">
-                    <h2
-                        style={{
-                            color: '#5e5e5e', fontWeight: "bold"}}
-                    >
-                        Artists
-                    </h2>
-
-                    <p><strong>Number of artists: {sum}</strong></p>
-                </div>
+                    <HeaderInfo title="Artists" sum={sum}/>
                 <div className="Artists">
                     {artists}
                 </div>

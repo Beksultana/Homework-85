@@ -3,6 +3,7 @@ import {fetchTrack} from "../../store/actions/trackActions";
 import {connect} from "react-redux";
 import {Card, CardGroup} from "reactstrap";
 import './Tracks.css';
+import HeaderInfo from "../HeaderInfo/HeaderInfo";
 
 class Tracks extends Component {
 
@@ -18,7 +19,10 @@ class Tracks extends Component {
                     <CardGroup>
                         <Card>
                             <div className="TrackInfo">
-                                <p><strong>{track.numberTrack}</strong></p>
+                                <div className="NumberTrack">
+                                    <p><strong>{track.numberTrack}</strong></p>
+                                    <button className="Play"/>
+                                </div>
                                 <h5><strong>{track.trackName}</strong></h5>
                                 <p>{track.duration}</p>
                             </div>
@@ -32,15 +36,7 @@ class Tracks extends Component {
 
         return (
             <Fragment>
-                <div className="HeaderTitleInfo">
-                    <h2
-                        style={{color: '#5e5e5e', fontWeight: "bold"}}
-                    >
-                        Tracks
-                    </h2>
-
-                    <p><strong>Number of tracks: {sum}</strong></p>
-                </div>
+                <HeaderInfo title="Tracks" sum={sum}/>
 
                 <div className="Tracks">
                     <div className="headerInfo">
@@ -48,7 +44,6 @@ class Tracks extends Component {
                         <p><strong>Name</strong></p>
                         <p><strong>duration</strong></p>
                     </div>
-                    <hr/>
                     {tracks}
                 </div>
             </Fragment>

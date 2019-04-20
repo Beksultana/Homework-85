@@ -5,26 +5,42 @@ import App from './App';
 
 import {createStore, applyMiddleware, combineReducers, compose} from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import {BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
+import {createBrowserHistory} from 'history';
+import {connectRouter, routerMiddleware, ConnectedRouter} from 'connected-react-router';
 
 import musicReducer from './store/reducers/musicReducers';
+import userReducer from './store/reducers/usersReducers';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as serviceWorker from './serviceWorker';
 
+const history = createBrowserHistory();
+
+
+
 const rootReducer = combineReducers({
-    musicReducers: musicReducer
+    router: connectRouter(history),
+    musicReducers: musicReducer,
+    user: userReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunkMiddleware)));
+const middleware = [
+    thunkMiddleware,
+    routerMiddleware(history)
+];
+
+const enhancers = composeEnhancers(applyMiddleware(...middleware));
+
+const store = createStore(rootReducer, enhancers);
+
 
 const app = (
     <Provider store={store}>
-        <BrowserRouter>
+        <ConnectedRouter history={history}>
             <App/>
-        </BrowserRouter>
+        </ConnectedRouter>
     </Provider>
 );
 

@@ -4,6 +4,7 @@ import {fetchAlbums} from "../../store/actions/albumsActions";
 import {Card, CardBody, CardGroup, CardImg, CardText} from "reactstrap";
 import {Link} from "react-router-dom";
 import './Albums.css';
+import HeaderInfo from "../HeaderInfo/HeaderInfo";
 
 class Albums extends Component {
 
@@ -35,15 +36,7 @@ class Albums extends Component {
 
         return (
             <Fragment>
-                <div className="HeaderTitleInfo">
-                    <h2
-                        style={{color: '#5e5e5e', fontWeight: "bold"}}
-                    >
-                        Albums
-                    </h2>
-
-                    <p><strong>Number of albums: {sum}</strong></p>
-                </div>
+                <HeaderInfo title="Albums" sum={sum}/>
 
                 <div className="Albums">
                     {albums}
