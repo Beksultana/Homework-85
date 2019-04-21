@@ -50,21 +50,21 @@ class Registers extends Component {
                     <div className="Form">
                         <Form onSubmit={this.submitFormHandler}>
                             <FormElement
+                                title="Username"
                                 type="text"
                                 name="username"
                                 value={this.state.username}
                                 onChange={this.onChangeHandler}
                                 className="input"
-                                placeholder="username"
                             />
 
                             <FormElement
+                                title="Password"
                                 type="password"
                                 name="password"
                                 value={this.state.password}
                                 onChange={this.onChangeHandler}
                                 className="input"
-                                placeholder="password"
                             />
 
                             <div className="buttonBox">
