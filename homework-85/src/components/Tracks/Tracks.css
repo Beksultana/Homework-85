@@ -36,7 +36,7 @@
 .Play {
     padding: 0 15px;
     margin-left: 10px;
-    background: #008dee url("../../assets/image/play.png")50% 50% no-repeat;
+    background: #008dee url("../../assets/image/play.png")55% 50% no-repeat;
     color: white;
     border: transparent;
     border-radius: 50%;
@@ -45,7 +45,7 @@
 }
 
 .Play:hover {
-    background: #0078cb url("../../assets/image/play.png")50% 50% no-repeat;
+    background: #0078cb url("../../assets/image/play.png")55% 50% no-repeat;
 }
 
 .Play:active {

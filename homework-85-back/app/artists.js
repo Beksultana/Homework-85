@@ -23,28 +23,5 @@ router.get('/', (req, res) => {
        .catch(() => res.sendStatus(500))
 });
 
-router.get('/:id' , async (req, res) => {
-    try {
-        const albums = await AlbumSchema.find({artists: req.params.id});
-        res.send(albums)
-    } catch (error) {
-        res.status(400).send(error)
-    }
-});
-
-router.post('/', (req, res) => {
-    const artistData = req.body;
-    artistData.id = nanoid();
-
-    if (req.file) {
-        artistData.image = req.file.filename;
-    }
-
-    const Artist = new ArtistSchema(artistData);
-
-    Artist.save()
-        .then(result => res.send(result))
-        .catch(error => res.status(400).send(error))
-});
 
 module.exports = router;
