@@ -5,11 +5,13 @@ const bcrypt = require('bcrypt');
 const router = express.Router();
 
 router.post('/', async (req, res) => {
-
-    const user = new UserSchema(req.body);
-        user.save()
-        .then(user => res.send({message: "User registered", user}))
-        .catch(error => res.status(400).send(error))
+    try {
+        const user = await new UserSchema(req.body);
+        await user.save();
+        res.send(user);
+    }catch (error) {
+        res.status(400).send(error)
+    }
 });
 
 router.post('/session', async (req, res) => {

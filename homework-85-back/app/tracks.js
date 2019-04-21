@@ -2,12 +2,6 @@ const express = require('express');
 const TrackSchema = require('../modules/Track');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    TrackSchema.find()
-        .then(result => res.send(result))
-        .catch(() => res.sendStatus(500))
-});
-
 router.get('/:id', async (req, res) => {
     try {
         const track = await TrackSchema.find({albums: req.params.id}, null ,{sort: {numberTrack: 1}});

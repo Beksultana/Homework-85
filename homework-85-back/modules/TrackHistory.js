@@ -5,11 +5,12 @@ const TrackHistorySchema = new Schema({
 
     artistsToken: {
         type: Schema.Types.ObjectId,
-        ref: 'Artists',
+        ref: 'Artist',
         required: true
     },
-    trackId: {
-        type: String,
+    track: {
+        type: Schema.Types.ObjectId,
+        ref: "Track",
         required: true
     },
 
