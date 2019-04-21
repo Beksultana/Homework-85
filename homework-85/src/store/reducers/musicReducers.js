@@ -1,9 +1,13 @@
-import {FETCH_ALBUM_SUCCESS, FETCH_ARTISTS_SUCCESS, FETCH_TRACK_SUCCESS} from "../actions/musicTypeActions";
+import {
+    FETCH_ALBUM_SUCCESS,
+    FETCH_ARTISTS_SUCCESS,
+    FETCH_TRACK_SUCCESS
+} from "../actions/musicTypeActions";
 
 const initialState = {
     artists: [],
     albums: [],
-    tracks: []
+    tracks: [],
 };
 
 const musicReducer = (state = initialState, action) => {

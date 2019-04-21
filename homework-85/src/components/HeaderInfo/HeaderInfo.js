@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import logoMusic from '../../assets/image/logomusic.png';
 
 const HeaderInfo = (props) => {
     return (
@@ -11,7 +10,7 @@ const HeaderInfo = (props) => {
             >
                 {props.title}
             </h2>
-            <img className="logoMusic" src={logoMusic} alt="logo image"/>
+            <h3><strong>{props.artistName}</strong></h3>
 
             <p><strong>Number of artists: {props.sum}</strong></p>
         </div>
@@ -19,6 +18,7 @@ const HeaderInfo = (props) => {
 };
 
 HeaderInfo.propTypes = {
+    artistName: PropTypes.string,
     title: PropTypes.string.isRequired,
     sum: PropTypes.number,
 };

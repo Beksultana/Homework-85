@@ -11,3 +11,9 @@
     box-shadow: 5px 5px 8px #ccc;
     text-align: center;
 }
+.AlbumsItem:hover {
+    cursor: pointer;
+    box-shadow: 5px 5px 8px #ccc;
+    border: 3px solid #00aadf;
+    border-radius: 5px;
+}

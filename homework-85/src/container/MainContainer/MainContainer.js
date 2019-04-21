@@ -12,19 +12,21 @@ class MainContainer extends Component {
         this.props.fetchArtists();
     }
 
+    historyPush = (id) => {
+        this.props.history.push(/albums/ + id);
+    };
+
     render() {
 
         const artists = this.props.artists ? this.props.artists.map(artist => {
             return (
-                <div className="ArtistItem" key={artist._id}>
+                <div onClick={() => this.historyPush(artist._id)} className="ArtistItem" key={artist._id}>
                     <CardGroup>
                         <Card>
                             <CardImg top width="100%" src={"http://localhost:9000/uploads/" + artist.image}
                                      alt="Card image cap" />
                             <CardBody>
-                                <Link to={/albums/ + artist._id}>
-                                    {artist.artists}
-                                </Link>
+                                <h5><strong>{artist.artists}</strong></h5>
                             </CardBody>
                         </Card>
                     </CardGroup>
