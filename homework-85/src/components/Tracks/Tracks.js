@@ -32,11 +32,11 @@ class Tracks extends Component {
             )
         }) : null;
 
-        const sum = tracks.length;
+        const numberOfTracks = this.props.numberOfTracks;
 
         return (
             <Fragment>
-                <HeaderInfo title="Tracks" sum={sum}/>
+                <HeaderInfo title="Tracks" sum={numberOfTracks} musicOfNumber="tracks"/>
 
                 <div className="Tracks">
                     <div className="headerInfo">
@@ -52,7 +52,8 @@ class Tracks extends Component {
 }
 
 const mapStateToProps = state => ({
-    tracks: state.musicReducers.tracks
+    tracks: state.musicReducers.tracks,
+    numberOfTracks: state.musicReducers.numberOfTracks
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -44,7 +44,7 @@ class Albums extends Component {
 
         return (
             <Fragment>
-                <HeaderInfo artistName={artists} title="Albums" sum={sum}/>
+                <HeaderInfo artistName={artists} title="Albums" sum={sum} musicOfNumber="albums"/>
 
                 <div className="Albums">
                     {albums}

@@ -8,6 +8,7 @@ const initialState = {
     artists: [],
     albums: [],
     tracks: [],
+    numberOfTracks: null
 };
 
 const musicReducer = (state = initialState, action) => {
@@ -22,7 +23,7 @@ const musicReducer = (state = initialState, action) => {
             };
         case FETCH_TRACK_SUCCESS:
             return {
-                ...state, tracks: action.tracks
+                ...state, tracks: action.tracks.tracks, numberOfTracks: action.tracks.number
             };
         default:
             return state;

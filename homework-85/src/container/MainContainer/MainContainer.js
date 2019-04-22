@@ -38,7 +38,7 @@ class MainContainer extends Component {
 
         return (
             <Fragment>
-                    <HeaderInfo title="Artists" sum={sum}/>
+                    <HeaderInfo musicOfNumber="artists" title="Artists" sum={sum}/>
                 <div className="Artists">
                     {artists}
                 </div>
