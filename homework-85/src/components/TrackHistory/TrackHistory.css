@@ -1,0 +1,8 @@
+.TrackHistories {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 30px;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 8px #ccc;
+    margin: 10px 0;
+}

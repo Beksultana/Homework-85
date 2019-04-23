@@ -7,6 +7,7 @@ const artists = require('./app/artists');
 const albums = require('./app/albums');
 const tracks = require('./app/tracks');
 const users = require('./app/users');
+const trackHistory = require('./app/trackHistory');
 
 const app = express();
 
@@ -21,6 +22,8 @@ mongoose.connect(config.artistsDb, config.mongooseOptions).then(() => {
     app.use('/albums', albums);
     app.use('/tracks', tracks);
     app.use('/users', users);
+    app.use('/users/sessions', users);
+    app.use('/track/history', trackHistory);
 
     app.listen(port, () => {
         console.log(`Server started on ${port} port!`);

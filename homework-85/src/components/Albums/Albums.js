@@ -1,8 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from "react-redux";
-import {fetchAlbums, fetchArtist} from "../../store/actions/albumsActions";
+import {fetchAlbums} from "../../store/actions/albumsActions";
 import {Card, CardBody, CardGroup, CardImg, CardText} from "reactstrap";
-import {Link} from "react-router-dom";
 import './Albums.css';
 import HeaderInfo from "../HeaderInfo/HeaderInfo";
 
@@ -19,8 +18,6 @@ class Albums extends Component {
     render() {
 
         let artists = '';
-
-        console.log(this.props.albums);
         const albums = this.props.albums ? this.props.albums.map(album => {
             artists = album.artists.artists;
 

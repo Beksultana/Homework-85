@@ -3,7 +3,6 @@ import {connect} from "react-redux";
 import {fetchArtists} from "../../store/actions/musicSyncActions";
 import {Card, CardBody, CardGroup, CardImg} from "reactstrap";
 import './MainContainer.css';
-import {Link} from "react-router-dom";
 import HeaderInfo from "../../components/HeaderInfo/HeaderInfo";
 
 class MainContainer extends Component {

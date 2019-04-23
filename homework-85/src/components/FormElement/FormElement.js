@@ -13,6 +13,7 @@ const FormElement = (props) => {
                        placeholder={props.placeholder}
                        value={props.value}
                        onChange={props.onChange}
+                       required={props.required}
                 />
             </Col>
         </FormGroup>
@@ -26,7 +27,7 @@ FormElement.propTypes = {
     name: PropTypes.string.isRequired,
     placeholder: PropTypes.string,
     value: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired
+    onChange: PropTypes.func.isRequired,
 };
 
 export default FormElement;

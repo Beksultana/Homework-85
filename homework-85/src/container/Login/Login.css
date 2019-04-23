@@ -1,0 +1,17 @@
+.Form {
+    margin-top: 50px;
+    padding: 30px;
+}
+.LoginBlock {
+    width: 40%;
+    margin: 10px auto;
+    border: 1px solid #dcdcdc;
+    box-shadow: 3px 4px 8px #ccc;
+    border-radius: 15px;
+}
+.LoginTextBlock {
+    width: 100%;
+    padding: 20px;
+    background: #008dee;
+    border-radius: 5px 5px 0 0;
+}

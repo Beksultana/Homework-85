@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import {fetchTrack} from "../../store/actions/trackActions";
+import {fetchTrack, postNewTrack} from "../../store/actions/trackActions";
 import {connect} from "react-redux";
 import {Card, CardGroup} from "reactstrap";
 import './Tracks.css';
@@ -21,7 +21,7 @@ class Tracks extends Component {
                             <div className="TrackInfo">
                                 <div className="NumberTrack">
                                     <p><strong>{track.numberTrack}</strong></p>
-                                    <button className="Play"/>
+                                    <button onClick={() => this.props.postTrack(track._id)} className="Play"/>
                                 </div>
                                 <h5><strong>{track.trackName}</strong></h5>
                                 <p>{track.duration}</p>
@@ -57,7 +57,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchTracks: (id) => dispatch(fetchTrack(id))
+    fetchTracks: (id) => dispatch(fetchTrack(id)),
+    postTrack: (trackId) => dispatch(postNewTrack(trackId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Tracks);

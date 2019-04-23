@@ -1,11 +1,11 @@
 import React, {Component, Fragment} from 'react';
 import {Alert, Button, Form} from "reactstrap";
-import './Register.css';
 import FormElement from "../../components/FormElement/FormElement";
-import {registerSuccess} from "../../store/actions/usersActions";
+import './Login.css';
+import {loginSuccess} from "../../store/actions/usersActions";
 import {connect} from "react-redux";
 
-class Registers extends Component {
+class Login extends Component {
 
     state = {
         username: '',
@@ -20,16 +20,15 @@ class Registers extends Component {
 
     submitFormHandler = event => {
         event.preventDefault();
-
-        this.props.registerUser({...this.state});
+        this.props.loginUser({...this.state});
     };
 
     submitCancel = event => {
         event.preventDefault();
         this.props.history.push('/');
     };
-    render() {
 
+    render() {
         return (
             <Fragment>
                 <div className="HeaderTitleInfo">
@@ -37,14 +36,14 @@ class Registers extends Component {
                         style={{
                             color: '#5e5e5e', fontWeight: "bold"}}
                     >
-                        Register
+                        Login
                     </h2>
                 </div>
-                <hr/>
-                <div className="signUp">
 
-                    <div className="SignUpTextBlock">
-                        <h2 className="SignUpText">Sign Up</h2>
+                <div className="LoginBlock">
+
+                    <div className="LoginTextBlock">
+                        <h2 className="SignUpText">Login</h2>
                     </div>
                     {this.props.error && (
                         <Alert color="danger">
@@ -73,24 +72,24 @@ class Registers extends Component {
 
                             <div className="buttonBox">
                                 <Button onClick={this.submitCancel} className="btn" color="danger">Cancel</Button>
-                                <Button type="submit" className="btn" color="success">Register</Button>
+                                <Button type="submit" className="btn" color="success">Login</Button>
                             </div>
 
                         </Form>
                     </div>
                 </div>
             </Fragment>
+
         );
     }
 }
 
 const mapStateToProps = state => ({
-    error: state.user.error,
-    user: state.user.user
+    error: state.musicReducers.error
 });
 
 const mapDispatchToProps = dispatch => ({
-    registerUser: userData => dispatch(registerSuccess (userData))
+    loginUser: (userData) => dispatch(loginSuccess(userData))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Registers);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

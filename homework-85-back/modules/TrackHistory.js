@@ -3,17 +3,20 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const TrackHistorySchema = new Schema({
 
-    artistsToken: {
+    user: {
         type: Schema.Types.ObjectId,
-        ref: 'Artist',
+        ref: 'User',
         required: true
     },
-    track: {
+    tracks: {
         type: Schema.Types.ObjectId,
-        ref: "Track",
+        ref: 'Track',
         required: true
     },
-
+    dateTime: {
+        type: String,
+        required: true
+    }
 
 });
 
