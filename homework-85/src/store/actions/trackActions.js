@@ -23,7 +23,7 @@ export const fetchTrack = id => {
 
 export const postNewTrack = trackId => {
     return (dispatch, getState) => {
-        const token = getState().user.user.token;
+        const token = getState().users.user.token;
         return axios.post('/track/history', {tracks: trackId}, {headers: {"Authorization": token}}).then(
             response => {
                 dispatch(fetchUserSuccess(response.data));
@@ -37,7 +37,7 @@ export const postNewTrack = trackId => {
 
 export const fetchTrackHistory = () => {
     return (dispatch, getState) => {
-        const token = getState().user.user.token;
+        const token = getState().users.user.token;
         return axios.get('/track/history', {headers: {"Authorization": token}}).then(
             response => {
                 dispatch(fetchTrackHistorySuccess(response.data))

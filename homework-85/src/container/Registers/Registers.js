@@ -85,8 +85,8 @@ class Registers extends Component {
 }
 
 const mapStateToProps = state => ({
-    error: state.user.error,
-    user: state.user.user
+    error: state.users.error,
+    user: state.users.user
 });
 
 const mapDispatchToProps = dispatch => ({
