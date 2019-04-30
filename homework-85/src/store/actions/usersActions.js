@@ -7,6 +7,7 @@ import {
     REGISTER_USER_FAILURE,
     REGISTER_USER_SUCCESS
 } from "./musicTypeActions";
+
 import {NotificationManager} from 'react-notifications';
 
 const registerUserSuccess = userData => ({type: REGISTER_USER_SUCCESS, userData});
@@ -14,8 +15,6 @@ const registerUserFailure = (error) => ({type: REGISTER_USER_FAILURE, error});
 
 const loginUserSuccess = user => ({type: LOGIN_USER_SUCCESS, user});
 const loginUserFailure = error => ({type: LOGIN_USER_FAILURE, error});
-
-export const logoutUser = () => ({type: LOGOUT_USER});
 
 export const registerSuccess = userData => {
     return dispatch => {
@@ -53,4 +52,21 @@ export const loginSuccess = loginData => {
           }
       );
   };
+};
+
+export const logoutUser = () => {
+    return (dispatch, getState) => {
+        const token = getState().users.user.token;
+        const config = {headers: {'Authorization': token}};
+
+        return axios.delete('/users/sessions', config).then(
+            () => {
+                dispatch({type: LOGOUT_USER});
+                NotificationManager.success('Logged out!');
+            },
+            error => {
+                NotificationManager.error('Cloud not logout!');
+            }
+        );
+    };
 };

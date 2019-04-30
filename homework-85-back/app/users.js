@@ -34,7 +34,7 @@ router.post('/sessions', async (req, res) => {
     return res.send({message: "Login success", user});
 });
 
-router.delete('/session', async (req, res) => {
+router.delete('/sessions', async (req, res) => {
     const token = req.get('Authorization');
     const success = {message: 'Logged out'};
 
