@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
 const config = require('./config');
+const nanoid = require('nanoid');
 
 const Artist = require('./modules/Artist');
 const Album = require('./modules/Album');
 const Track = require('./modules/Track');
+const User = require('./modules/User');
 
 const run = async () => {
     await mongoose.connect(config.artistsDb, config.mongooseOptions);
@@ -13,6 +15,21 @@ const run = async () => {
     for(let collection of collections){
         await collection.drop();
     }
+
+    await User.create(
+        {
+            username: 'user',
+            role: 'user',
+            password: '123',
+            token: nanoid()
+        },
+        {
+            username: 'admin',
+            role: 'admin',
+            password: '123',
+            token: nanoid()
+        }
+    );
 
     const artists = await Artist.create(
         {artists: 'Ketsa', description: "It's Roxy", image: 'Ketsa.jpg'},

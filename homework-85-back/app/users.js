@@ -1,7 +1,7 @@
 const express = require('express');
 const UserSchema = require('../modules/User');
 const bcrypt = require('bcrypt');
-
+const auth = require('../middleware/auth');
 const router = express.Router();
 
 router.post('/', async (req, res) => {
@@ -32,6 +32,32 @@ router.post('/sessions', async (req, res) => {
     await user.save();
 
     return res.send({message: "Login success", user});
+});
+
+router.delete('/session', async (req, res) => {
+    const token = req.get('Authorization');
+    const success = {message: 'Logged out'};
+
+    if (!token) {
+        return res.send(success);
+    }
+
+    const user = UserSchema.findOne({token});
+    if (!user) {
+        return res.send(success);
+    }
+
+    user.generateToken();
+    await user.save();
+    return res.send(success);
+});
+
+router.put('/', auth, async (req, res) => {
+    req.user.password = req.body.password;
+
+    await req.user.save();
+
+    res.sendStatus(200);
 });
 
 module.exports = router;
