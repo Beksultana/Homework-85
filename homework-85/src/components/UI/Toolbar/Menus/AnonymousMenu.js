@@ -5,7 +5,6 @@ import {NavLink as RouterNavLink} from "react-router-dom";
 const AnonymousMenu = () => {
     return (
         <Fragment>
-
             <NavItem>
                 <NavLink tag={RouterNavLink} to="/register" exact>Sign up</NavLink>
             </NavItem>

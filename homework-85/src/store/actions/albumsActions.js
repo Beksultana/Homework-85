@@ -1,14 +1,31 @@
 
 import axios from '../../axios-api';
-import {FETCH_ALBUM_SUCCESS} from "./musicTypeActions";
+import {CREATE_ALBUM_SUCCESS, FETCH_ALBUM_SUCCESS, FETCH_ALBUMS_SUCCESS} from "./musicTypeActions";
 
-export const fetchAlbumsSuccess = albums => ({type: FETCH_ALBUM_SUCCESS, albums});
+export const fetchAlbumSuccess = album => ({type: FETCH_ALBUM_SUCCESS, album});
+export const createAlbumSuccess = () => ({type: CREATE_ALBUM_SUCCESS});
+export const fetchAlbumsSuccess = albums => ({type: FETCH_ALBUMS_SUCCESS, albums});
 
-export const fetchAlbums = (id) => {
+export const fetchAlbum = (id) => {
     return dispatch => {
-
         return axios.get('/albums/' + id).then(response => {
-            dispatch(fetchAlbumsSuccess(response.data))
+            dispatch(fetchAlbumSuccess(response.data))
         });
+    };
+};
+
+export const fetchAlbums = () => {
+    return dispatch => {
+        return axios.get('/albums').then(response => {
+            dispatch(fetchAlbumsSuccess(response.data))
+        })
+    };
+};
+
+export const createAlbum = albumData => {
+    return dispatch => {
+        return axios.post('/albums', albumData).then(
+            () => dispatch(createAlbumSuccess())
+        )
     };
 };

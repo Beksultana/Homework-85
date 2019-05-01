@@ -1,11 +1,12 @@
 import {
-    FETCH_ALBUM_SUCCESS,
+    FETCH_ALBUM_SUCCESS, FETCH_ALBUMS_SUCCESS,
     FETCH_ARTISTS_SUCCESS, FETCH_TRACK_HISTORY_SUCCESS,
     FETCH_TRACK_SUCCESS
 } from "../actions/musicTypeActions";
 
 const initialState = {
     artists: [],
+    album: [],
     albums: [],
     tracks: [],
     trackHistories: {},
@@ -20,8 +21,10 @@ const musicReducer = (state = initialState, action) => {
             };
         case FETCH_ALBUM_SUCCESS:
             return {
-                ...state, albums: action.albums
+                ...state, album: action.album
             };
+        case FETCH_ALBUMS_SUCCESS:
+            return {...state, albums: action.albums};
         case FETCH_TRACK_SUCCESS:
             return {
                 ...state, tracks: action.tracks.tracks, numberOfTracks: action.tracks.number

@@ -4,6 +4,7 @@ import {fetchArtists} from "../../store/actions/musicSyncActions";
 import {Card, CardBody, CardGroup, CardImg} from "reactstrap";
 import './MainContainer.css';
 import HeaderInfo from "../../components/HeaderInfo/HeaderInfo";
+import BtnLinks from "../../components/UI/BtnLinks/BtnLinks";
 
 class MainContainer extends Component {
 
@@ -37,6 +38,7 @@ class MainContainer extends Component {
 
         return (
             <Fragment>
+                <BtnLinks/>
                     <HeaderInfo musicOfNumber="artists" title="Artists" sum={sum}/>
                 <div className="Artists">
                     {artists}

@@ -17,7 +17,7 @@ app.use(cors());
 
 const port = 9000;
 
-mongoose.connect(config.artistsDb, config.mongooseOptions).then(() => {
+mongoose.connect(config.artistsDb, config.mongoOptions).then(() => {
     app.use('/artists', artists);
     app.use('/albums', albums);
     app.use('/tracks', tracks);

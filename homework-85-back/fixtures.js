@@ -8,7 +8,7 @@ const Track = require('./modules/Track');
 const User = require('./modules/User');
 
 const run = async () => {
-    await mongoose.connect(config.artistsDb, config.mongooseOptions);
+    await mongoose.connect(config.artistsDb, config.mongoOptions);
     const connection = mongoose.connection;
     const collections = await connection.db.collections();
 

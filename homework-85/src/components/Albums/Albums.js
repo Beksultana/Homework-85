@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from "react-redux";
-import {fetchAlbums} from "../../store/actions/albumsActions";
+import {fetchAlbum} from "../../store/actions/albumsActions";
 import {Card, CardBody, CardGroup, CardImg, CardText} from "reactstrap";
 import './Albums.css';
 import HeaderInfo from "../HeaderInfo/HeaderInfo";
@@ -53,11 +53,11 @@ class Albums extends Component {
 }
 
 const mapStateToProps = state => ({
-    albums: state.musicReducers.albums
+    albums: state.musicReducers.album
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchAlbums: (id) => dispatch(fetchAlbums(id)),
+    fetchAlbums: (id) => dispatch(fetchAlbum(id)),
 });
 
 

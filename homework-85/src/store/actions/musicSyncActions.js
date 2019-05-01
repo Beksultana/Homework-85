@@ -1,7 +1,8 @@
 import axios from '../../axios-api'
-import {FETCH_ARTISTS_SUCCESS} from "./musicTypeActions";
+import {CREATE_ARTIST_SUCCESS, FETCH_ARTISTS_SUCCESS} from "./musicTypeActions";
 
-export const fetchArtistsSuccess = artists => ({type: FETCH_ARTISTS_SUCCESS, artists});
+const fetchArtistsSuccess = artists => ({type: FETCH_ARTISTS_SUCCESS, artists});
+const createArtistSuccess = () => ({type: CREATE_ARTIST_SUCCESS});
 
 export const fetchArtists = () => {
     return dispatch => {
@@ -11,3 +12,13 @@ export const fetchArtists = () => {
     };
 };
 
+
+export const createArtist = artistData => {
+    return dispatch => {
+        return axios.post('/artists', artistData).then(
+            response => {
+                dispatch(createArtistSuccess())
+            }
+        )
+    };
+};

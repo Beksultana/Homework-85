@@ -3,6 +3,7 @@ const ArtistSchema = require('../modules/Artist');
 const multer = require('multer');
 const config = require('../config');
 const nanoid = require('nanoid');
+const path = require('path');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
