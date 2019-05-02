@@ -12,7 +12,7 @@ class Tracks extends Component {
     }
 
     render() {
-
+        console.log(this.props.tracks);
         const tracks = this.props.tracks ? this.props.tracks.map(track => {
             return (
                 <div className="TrackItem" key={track._id}>
@@ -20,7 +20,7 @@ class Tracks extends Component {
                         <Card>
                             <div className="TrackInfo">
                                 <div className="NumberTrack">
-                                    <p><strong>{track.numberTrack}</strong></p>
+                                    <p><strong>{track.number}</strong></p>
                                     <button onClick={() => this.props.postTrack(track._id)} className="Play"/>
                                 </div>
                                 <h5><strong>{track.trackName}</strong></h5>

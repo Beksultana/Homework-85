@@ -16,6 +16,9 @@ const registerUserFailure = (error) => ({type: REGISTER_USER_FAILURE, error});
 const loginUserSuccess = user => ({type: LOGIN_USER_SUCCESS, user});
 const loginUserFailure = error => ({type: LOGIN_USER_FAILURE, error});
 
+
+const logoutUserSuccess = () => ({type:  LOGOUT_USER});
+
 export const registerSuccess = userData => {
     return dispatch => {
         return axios.post('/users', userData).then(
@@ -61,7 +64,7 @@ export const logoutUser = () => {
 
         return axios.delete('/users/sessions', config).then(
             () => {
-                dispatch({type: LOGOUT_USER});
+                dispatch(logoutUserSuccess());
                 NotificationManager.success('Logged out!');
             },
             error => {

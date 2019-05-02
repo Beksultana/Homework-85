@@ -15,7 +15,7 @@ class App extends Component {
                 <header>
                     <Toolbar
                         user={this.props.user}
-                        logout={this.props.logoutUser}
+                        logout={() => this.props.logoutUser()}
                     />
                 </header>
                 <Container>

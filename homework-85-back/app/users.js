@@ -42,12 +42,11 @@ router.delete('/sessions', async (req, res) => {
         return res.send(success);
     }
 
-    const user = UserSchema.findOne({token});
+    const user = await UserSchema.findOne({token});
     if (!user) {
         return res.send(success);
     }
 
-    user.generateToken();
     await user.save();
     return res.send(success);
 });

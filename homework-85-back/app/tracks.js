@@ -20,7 +20,7 @@ const upload = multer({storage});
 
 router.get('/:id', async (req, res) => {
     try {
-        const track = await TrackSchema.find({albums: req.params.id}, null ,{sort: {numberTrack: 1}}).populate('albums');
+        const track = await TrackSchema.find({albums: req.params.id}, null ,{sort: {number: 1}}).populate('albums');
         const number = track.length;
         res.send({tracks: track, number: number});
     } catch (error) {
@@ -28,17 +28,24 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.post('/', upload.single('image'), (req, res) => {
-    const trackData = req.body;
-    if (req.file) {
-        trackData.image = req.file.fieldname;
+router.post('/', upload.single('image'), async (req, res) => {
+    try {
+        const trackData = req.body;
+        if (req.file) {
+            trackData.image = req.file.fieldname;
+        }
+
+        const tracks = await TrackSchema.find({albums: req.body.albums});
+
+        const track = new TrackSchema(trackData);
+
+        track.number = tracks.length + 1;
+
+        await track.save();
+        res.send(track)
+    } catch (e) {
+        res.send({message: "ERROR"})
     }
-
-    const track = new TrackSchema(trackData);
-
-    track.save()
-        .then(result => res.send(result))
-        .catch(error => res.send(error))
 });
 
 module.exports = router;
