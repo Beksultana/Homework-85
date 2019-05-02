@@ -7,17 +7,6 @@ const path = require('path');
 
 const router = express.Router();
 
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, config.uploadPath);
-    },
-    filename: (req, file, cb) => {
-        cb(null, nanoid() + path.extname(file.originalname))
-    }
-});
-
-const upload = multer({storage});
-
 router.get('/:id', async (req, res) => {
     try {
         const track = await TrackSchema.find(
@@ -32,15 +21,10 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.post('/', upload.single('image'), async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const trackData = req.body;
-        if (req.file) {
-            trackData.image = req.file.fieldname;
-        }
-
         const tracks = await TrackSchema.find({albums: req.body.albums});
-
         const track = new TrackSchema(trackData);
 
         track.number = tracks.length + 1;
