@@ -29,7 +29,7 @@ const Routes = ({user}) => {
             <Route path="/trackHistory" component={TrackHistory}/>
             <Route path="/new/artist" component={NewArtists}/>
             <Route path="/new/album" component={NewAlbums}/>
-            <Route path="/new/track" component={NewTrack}/>
+            <Route path="/new-track" component={NewTrack}/>
         </Switch>
     );
 };

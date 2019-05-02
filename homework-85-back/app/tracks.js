@@ -20,7 +20,11 @@ const upload = multer({storage});
 
 router.get('/:id', async (req, res) => {
     try {
-        const track = await TrackSchema.find({albums: req.params.id}, null ,{sort: {number: 1}}).populate('albums');
+        const track = await TrackSchema.find(
+            {albums: req.params.id})
+            .populate('albums')
+            .sort({number: 0});
+
         const number = track.length;
         res.send({tracks: track, number: number});
     } catch (error) {

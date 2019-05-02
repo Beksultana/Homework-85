@@ -4,6 +4,8 @@ const multer = require('multer');
 const config = require('../config');
 const nanoid = require('nanoid');
 const path = require('path');
+const permit = require('../middleware/Permit');
+const auth = require('../middleware/auth');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {

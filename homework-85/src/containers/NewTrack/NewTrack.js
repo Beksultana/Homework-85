@@ -1,20 +1,24 @@
 import React, {Component} from 'react';
 import {Button, Col, Form, FormGroup, Input, Label} from "reactstrap";
-import {fetchAlbums} from "../../store/actions/albumsActions";
+import {fetchAlbum} from "../../store/actions/albumsActions";
 import {connect} from "react-redux";
 import {createTrack} from "../../store/actions/trackActions";
 
 class NewTrack extends Component {
 
-    componentDidMount() {
-        this.props.fetchAlbums()
-    }
-
     state = {
         trackName: '',
         albums: '',
-        duration: ''
+        duration: '',
+        artists: ''
     };
+
+    componentDidUpdate(prevState, prevProps) {
+        if (this.state.artists !== prevProps.artists){
+            this.props.fetchAlbum(this.state.artists)
+        }
+    };
+
 
     inputChangeHandler = event => {
         this.setState({
@@ -48,7 +52,7 @@ class NewTrack extends Component {
                         <Label for="duration" sm={2}>Duration</Label>
                         <Col sm={10}>
                             <Input
-                                type="text"
+                                type="number"
                                 name="duration"
                                 id="duration"
                                 value={this.state.duration}
@@ -58,7 +62,31 @@ class NewTrack extends Component {
                     </FormGroup>
 
                     <FormGroup row>
-                        <Label for="albums" sm={2}>Albums</Label>
+                        <Label for="artists" sm={2}>Artists names</Label>
+                        <Col sm={10}>
+                            <Input
+                                type="select"
+                                name="artists"
+                                id="artists"
+                                value={this.state.artists}
+                                onChange={this.inputChangeHandler}
+                            >
+                                {this.props.artists.map(artist => {
+                                    return (
+                                        <option
+                                            key={artist._id}
+                                            value={artist._id}
+                                        >
+                                            {artist.artists}
+                                        </option>
+                                    )
+                                })}
+                            </Input>
+                        </Col>
+                    </FormGroup>
+
+                    <FormGroup row>
+                        <Label for="albums" sm={2}>Albums names</Label>
                         <Col sm={10}>
                             <Input
                                 type="select"
@@ -67,11 +95,14 @@ class NewTrack extends Component {
                                 value={this.state.albums}
                                 onChange={this.inputChangeHandler}
                             >
-                                {this.props.albums.map(album => (
-                                    <option key={album._id} value={album._id}>
-                                        {album.albumName}
-                                    </option>
-                                ))}
+                                {this.props.album.map(album => {
+                                    return (
+                                        <option key={album._id} value={album._id}>
+                                            {album.albumName}
+                                        </option>
+                                    )
+
+                                })}
                             </Input>
                         </Col>
                     </FormGroup>
@@ -88,11 +119,12 @@ class NewTrack extends Component {
 }
 
 const mapStateToProps = state => ({
-    albums: state.musicReducers.albums
+    artists: state.musicReducers.artists,
+    album: state.musicReducers.album
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchAlbums: () => dispatch(fetchAlbums()),
+    fetchAlbum: (id) => dispatch(fetchAlbum(id)),
     createTrack: trackData => dispatch(createTrack(trackData))
 });
 

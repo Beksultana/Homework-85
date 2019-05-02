@@ -17,7 +17,7 @@ const BtnLinks = () => {
                         Create album
                     </p>
                 </NavLink>
-                <NavLink tag={RouterNavLink} to="/new/track">
+                <NavLink tag={RouterNavLink} to="/new-track">
                     <p className="new">
                         Create track
                     </p>

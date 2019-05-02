@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-    AlbumSchema.find({artists: req.params.id}, null, {sort: {year: 1}}).populate('artists')
+    AlbumSchema.find({artists: req.params.id}).populate('artists').sort({year: 0})
         .then(result => res.send(result))
         .catch(() => res.sendStatus(500))
 

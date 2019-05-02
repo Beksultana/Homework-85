@@ -66,7 +66,7 @@ class AlbumForm extends Component {
                     </FormGroup>
 
                     <FormGroup row>
-                        <Label for="artists" sm={2}>Artists</Label>
+                        <Label for="artists" sm={2}>Artists names</Label>
                         <Col sm={10}>
                             <Input
                                 type="select"

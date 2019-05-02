@@ -11,6 +11,11 @@ const ArtistSchema = new Schema({
     description: {
        type: String
     },
+    published: {
+        type: Boolean,
+        required: true,
+        default: false
+    }
 });
 const Artist = mongoose.model('Artist', ArtistSchema);
 module.exports = Artist;
