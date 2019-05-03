@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import {Button, Col, Form, FormGroup, Input, Label} from "reactstrap";
 import {fetchAlbum} from "../../store/actions/albumsActions";
 import {connect} from "react-redux";
@@ -71,6 +71,7 @@ class NewTrack extends Component {
                                 value={this.state.artists}
                                 onChange={this.inputChangeHandler}
                             >
+                                <option value="">Place select categories</option>
                                 {this.props.artists.map(artist => {
                                     return (
                                         <option
@@ -95,11 +96,13 @@ class NewTrack extends Component {
                                 value={this.state.albums}
                                 onChange={this.inputChangeHandler}
                             >
+                                <option value="">Place select categories</option>
                                 {this.props.album.map(album => {
                                     return (
                                         <option key={album._id} value={album._id}>
                                             {album.albumName}
                                         </option>
+
                                     )
 
                                 })}

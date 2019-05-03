@@ -75,6 +75,7 @@ class AlbumForm extends Component {
                                 value={this.state.artists}
                                 onChange={this.inputChangeHandler}
                             >
+                                <option value="">Place select categories</option>
                                 {this.props.artists.map(artist => (
                                     <option key={artist._id} value={artist._id}>
                                         {artist.artists}

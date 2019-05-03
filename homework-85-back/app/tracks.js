@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
         track.number = tracks.length + 1;
 
         await track.save();
-        res.send(track)
+        res.send(track);
     } catch (e) {
         res.send({message: "ERROR"})
     }
