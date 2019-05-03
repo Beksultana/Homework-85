@@ -38,7 +38,10 @@ class MainContainer extends Component {
 
         return (
             <Fragment>
-                <BtnLinks/>
+                {
+                    this.props.user ? <BtnLinks/> : null
+                }
+
                     <HeaderInfo musicOfNumber="artists" title="Artists" sum={sum}/>
                 <div className="Artists">
                     {artists}
@@ -50,7 +53,8 @@ class MainContainer extends Component {
 
 const mapStateToProps = state => {
     return {
-        artists: state.musicReducers.artists
+        artists: state.musicReducers.artists,
+        user: state.users.user
     }
 };
 

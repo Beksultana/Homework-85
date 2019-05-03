@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import {Button, Col, Form, FormGroup, Input, Label} from "reactstrap";
 import {fetchAlbum} from "../../store/actions/albumsActions";
 import {connect} from "react-redux";

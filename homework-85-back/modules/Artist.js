@@ -13,8 +13,12 @@ const ArtistSchema = new Schema({
     },
     published: {
         type: Boolean,
-        required: true,
-        default: false
+        default: true
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     }
 });
 const Artist = mongoose.model('Artist', ArtistSchema);

@@ -16,7 +16,7 @@ const run = async () => {
         await collection.drop();
     }
 
-    await User.create(
+     const user = await User.create(
         {
             username: 'user',
             role: 'user',
@@ -32,12 +32,12 @@ const run = async () => {
     );
 
     const artists = await Artist.create(
-        {artists: 'Ketsa', description: "It's Roxy", image: 'Ketsa.jpg'},
-        {artists: 'Daniel Birch', description: "Rising Bells", image: 'danil.jpg'},
-        {artists: "Chad Crouch", description: "Appreciation" ,image: 'Chad.jpg'},
-        {artists: "Blue Dot Sessions ", description:  "An Oddly Formal Dance"  ,image: 'Aeronaut.jpg'},
-        {artists: "Small Colin ", description: "Mutations"  ,image: 'small.jpeg'},
-        {artists: "Robin Grey", description: "Every Waking Hour (Instrumental)",image: 'robin.jpg'},
+        {artists: 'Ketsa', description: "It's Roxy", image: 'Ketsa.jpg', user: user[0]._id},
+        {artists: 'Daniel Birch', description: "Rising Bells", image: 'danil.jpg', user: user[0]._id},
+        {artists: "Chad Crouch", description: "Appreciation" ,image: 'Chad.jpg', user: user[1]._id},
+        {artists: "Blue Dot Sessions ", description:  "An Oddly Formal Dance"  ,image: 'Aeronaut.jpg', user: user[1]._id},
+        {artists: "Small Colin ", description: "Mutations"  ,image: 'small.jpeg', user: user[0]._id},
+        {artists: "Robin Grey", description: "Every Waking Hour (Instrumental)",image: 'robin.jpg', user: user[0]._id},
     );
 
     const albums = await Album.create(
