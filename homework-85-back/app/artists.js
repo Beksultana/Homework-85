@@ -77,7 +77,14 @@ router.post('/:id/toggle_published', [auth, permit('admin')], async (req, res) =
    }
 });
 
-router.delete('/:id', [auth, permit('admin')], (req, res) => {
+router.delete('/:id', [auth, permit('admin')], async (req, res) => {
+    try {
+        await ArtistSchema.findByIdAndDelete({_id: req.params.id});
+        res.send({message: "OK"});
+
+    }catch (e) {
+        res.status(400).send({error: "Artist not found"});
+    }
 
 });
 module.exports = router;

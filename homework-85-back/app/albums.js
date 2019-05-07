@@ -5,6 +5,8 @@ const multer = require('multer');
 const config = require('../config');
 const nanoid = require('nanoid');
 const path = require('path');
+const auth = require('../middleware/auth')
+const permit = require('../middleware/Permit')
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -42,5 +44,16 @@ router.post('/', upload.single('image'), (req, res) => {
         .catch(error => res.send(error))
 });
 
+
+router.delete('/:id', [auth, permit('admin')], async (req, res) => {
+    try {
+        await AlbumSchema.findByIdAndDelete({_id: req.params.id});
+        res.send({message: "OK"});
+
+    }catch (e) {
+        res.status(400).send({error: "Album not found"});
+    }
+
+});
 
 module.exports = router;
