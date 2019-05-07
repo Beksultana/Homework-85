@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from "react-redux";
-import {fetchArtists} from "../../store/actions/musicSyncActions";
+import {deleteArtist, fetchArtists} from "../../store/actions/musicSyncActions";
 import {Button, Card, CardBody, CardGroup, CardImg} from "reactstrap";
 import './MainContainer.css';
 import HeaderInfo from "../../components/HeaderInfo/HeaderInfo";
@@ -29,7 +29,7 @@ class MainContainer extends Component {
                                 this.props.user && this.props.user.username
                                 && this.props.user.username === 'admin' ?
                                 <div className="btnBlock">
-                                    <Button color="danger">Delete</Button>
+                                    <Button onClick={() => this.props.deleteArtist(artist._id)} color="danger">Delete</Button>
                                     {
                                         artist.published === false ?
                                             <div><button className="bt danger">Not published</button> </div>:
@@ -71,6 +71,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         fetchArtists: () => dispatch(fetchArtists()),
+        deleteArtist: id => dispatch(deleteArtist(id))
     }
 };
 

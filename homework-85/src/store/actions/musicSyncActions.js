@@ -32,3 +32,15 @@ export const createArtist = artistData => {
         )
     };
 };
+
+export const deleteArtist = id => {
+    return (dispatch, getState) => {
+        const token = getState().users.user.token;
+        const config = {headers: {'Authorization': token}};
+        return axios.delete('/artists/' + id, config).then(
+            () => {
+                dispatch(fetchArtists())
+            }
+        )
+    };
+};

@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
-import {fetchTrack, postNewTrack} from "../../store/actions/trackActions";
+import {deleteTrack, fetchTrack, postNewTrack} from "../../store/actions/trackActions";
 import {connect} from "react-redux";
-import {Card, CardGroup} from "reactstrap";
+import {Button, Card, CardGroup} from "reactstrap";
 import './Tracks.css';
 import HeaderInfo from "../HeaderInfo/HeaderInfo";
 
@@ -21,9 +21,18 @@ class Tracks extends Component {
                             <div className="TrackInfo">
                                 <div className="NumberTrack">
                                     <p><strong>{track.number}</strong></p>
-                                    <button onClick={() => this.props.postTrack(track._id)} className="Play"/>
+                                    <button
+                                        onClick={() => this.props.postTrack(track._id)}
+                                        className="Play"/>
                                 </div>
                                 <h5><strong>{track.trackName}</strong></h5>
+                                {
+                                    this.props.user && this.props.user.username
+                                    && this.props.user.username === 'admin' ?
+                                        <Button onClick={() => this.props.deleteTrack(track._id)} color="danger">
+                                            Delete
+                                        </Button> : null
+                                }
                                 <p>{track.duration}</p>
                             </div>
                         </Card>
@@ -53,12 +62,14 @@ class Tracks extends Component {
 
 const mapStateToProps = state => ({
     tracks: state.musicReducers.tracks,
-    numberOfTracks: state.musicReducers.numberOfTracks
+    numberOfTracks: state.musicReducers.numberOfTracks,
+    user: state.users.user
 });
 
 const mapDispatchToProps = dispatch => ({
     fetchTracks: (id) => dispatch(fetchTrack(id)),
-    postTrack: (trackId) => dispatch(postNewTrack(trackId))
+    postTrack: (trackId) => dispatch(postNewTrack(trackId)),
+    deleteTrack: (id) => dispatch(deleteTrack(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Tracks);

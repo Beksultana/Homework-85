@@ -57,3 +57,15 @@ export const fetchTrackHistory = () => {
         )
     };
 };
+
+export const deleteTrack = (id) => {
+    return (dispatch, getState) => {
+        const token = getState().users.user.token;
+        const config = {headers: {'Authorization': token}};
+        return axios.delete(`/tracks/${id}`, config).then(
+            () => {
+                dispatch(push(`/`))
+            }
+        )
+    };
+};
