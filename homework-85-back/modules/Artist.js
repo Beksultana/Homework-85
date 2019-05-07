@@ -13,7 +13,7 @@ const ArtistSchema = new Schema({
     },
     published: {
         type: Boolean,
-        default: true
+        default: false
     },
     user: {
         type: Schema.Types.ObjectId,

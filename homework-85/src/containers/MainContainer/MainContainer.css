@@ -13,8 +13,30 @@
     text-align: center;
 }
 .ArtistItem:hover {
-    cursor: pointer;
     box-shadow: 5px 5px 8px #ccc;
     border: 3px solid #00aadf;
     border-radius: 5px;
+}
+.s {
+    display: flex;
+    justify-content: stretch;
+    align-items: center;
+}
+.btnBlock {
+    margin: 10px 0;
+}
+.bt {
+    padding: 5px 10px;
+    border-radius: 3px;
+    color: #fff;
+    border: transparent;
+}
+.bt:active {
+    opacity: 0.6;
+}
+.danger {
+    background: #f02d43;
+}
+.success {
+    background: #28a745;
 }

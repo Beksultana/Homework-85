@@ -22,8 +22,10 @@ export const fetchArtists =  () => {
 
 
 export const createArtist = artistData => {
-    return dispatch => {
-        return axios.post('/artists', artistData).then(
+    return (dispatch, getState) => {
+        const token = getState().users.user.token;
+        const config = {headers: {'Authorization': token}};
+        return axios.post('/artists', artistData, config).then(
             response => {
                 dispatch(createArtistSuccess())
             }

@@ -24,6 +24,12 @@ const router = express.Router();
 
 router.get('/', tryAuth, async (req, res) => {
     try {
+
+        if  (req.user.username === "admin"){
+            const artist = await ArtistSchema.find();
+            return res.send(artist)
+        }
+
         let criteria = {published: true};
         if (req.user){
             criteria = {$or: [
@@ -69,5 +75,9 @@ router.post('/:id/toggle_published', [auth, permit('admin')], async (req, res) =
    } catch (error) {
        return res.status(500).send(error)
    }
+});
+
+router.delete('/:id', [auth, permit('admin')], (req, res) => {
+
 });
 module.exports = router;
