@@ -44,6 +44,21 @@ router.post('/', upload.single('image'), (req, res) => {
         .catch(error => res.send(error))
 });
 
+router.post('/:id/toggle_published', [auth, permit('admin')], async (req, res) => {
+    try {
+        const album = await AlbumSchema.findById(req.params.id);
+        if (!album) {
+            return res.sendStatus(500)
+        }
+
+        album.published = !album.published;
+
+        await album.save();
+        res.send(album);
+    } catch (error) {
+        return res.status(500).send(error)
+    }
+});
 
 router.delete('/:id', [auth, permit('admin')], async (req, res) => {
     try {

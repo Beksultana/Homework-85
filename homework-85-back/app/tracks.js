@@ -36,6 +36,22 @@ router.post('/', async (req, res) => {
     }
 });
 
+router.post('/:id/toggle_published', [auth, permit('admin')], async (req, res) => {
+    try {
+        const track = await TrackSchema.findById(req.params.id);
+        if (!track) {
+            return res.sendStatus(500)
+        }
+
+        track.published = !track.published;
+
+        await track.save();
+        res.send(track);
+    } catch (error) {
+        return res.status(500).send(error)
+    }
+});
+
 router.delete('/:id', [auth, permit('admin')], async (req, res) => {
     try {
         await TrackSchema.findByIdAndDelete({_id: req.params.id});
